@@ -37,7 +37,6 @@ class FundController extends Controller{
 
 	public function edit($id){
 		$fund = DB::table('tfundraiser')->where('trxid',$id)->get();
-		// passing data fundraiser yang didapat ke view edit.blade.php
 		return view('edit',['fund' => $fund]); 
 	}
  
@@ -61,13 +60,12 @@ class FundController extends Controller{
 	}
  
 	public function hapus($id){
-		DB::table('tfundraiser')->where('fundid',$id)->delete();		
+		DB::table('tfundraiser')->where('trxid',$id)->delete();		
 		return redirect('/fund');
 	}
 
 	public function verifikasi($id){
 		$veri = DB::table('tfundraiser')->where('trxid',$id)->get();
-		// passing data fundraiser yang didapat ke view edit.blade.php
 		return view('verifikasi',['veri' => $veri]); 
 	}
  
@@ -75,7 +73,6 @@ class FundController extends Controller{
 		DB::table('tfundraiser')->where('trxid',$request->trxid)->update([
 			'fundstat' => $request->fundstat	
 		]);
-		// alihkan halaman ke halaman fund
 		return redirect('/fin');
 	}	
 

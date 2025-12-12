@@ -45,7 +45,6 @@
 			<td>
 				<a href="/fund/edit/{{ $p->trxid }}">Edit</a>
 				<a href="/fund/hapus/{{ $p->trxid }}">Hapus</a>
-				<a href="#" class="btn btn-default btn-xs">Tombol</a>
 			</td>
 		</tr>
 		@endforeach

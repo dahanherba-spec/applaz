@@ -42,5 +42,7 @@
 		</tr>
 		@endforeach
 	</table> 
+	<br/><br/>
+	<a href="/fin/upload"> + Upload Donasi dari Mutasi Bank</a>
 </body>
 </html>
