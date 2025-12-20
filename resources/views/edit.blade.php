@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>LAZAPP::FUNDRAISER::EDIT</title>
+	<title>LAZAPP::CRM/FUNDRAISER::EDIT</title>
  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 </head>
 <body>
@@ -9,27 +9,78 @@
 	<h3>Edit Donasi</h3>
  	<br/>
 	<br/>
-	<a href="/fund"> << Back</a>
-	
+	<div class="form-row">
+	    <div class="form-group col-md-6">
+			<a class="btn btn-warning btn-sm" href="/fund" role="button">&nbsp;<< Back&nbsp;</a>
+		</div>
+	</div>
 	<br/>
 	<br/>
  
 	@foreach($fund as $p)
 	<form action="/fund/update" method="post">
 		{{ csrf_field() }}
-        <input type="hidden" name="trxid" value="{{ $p->trxid }}"> <br/>
-		Tanggl Donasi &nbsp;<input type="text" name="dondate" required="required" value="{{ $p->dondate }}"> Format: 2025/12/10<br/>
-		Nama Donatur <input type="text" name="donname" required="required" value="{{ $p->donname }}"> zzzzzzzzz<br/>
-		Jumlah Donasi <input type="text" name="donamount" required="required" value="{{ $p->donamount }}"> 000000000<br/>
-		Tipe Donasi &nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="dontype" required="required" value="{{ $p->dontype }}"> Zakat/Infaq/Shodaqoh<br/>
-		Jenix TRX &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="dontrx" required="required" value="{{ $p->dontrx }}"> Cash/TF<br/>
-		No HP &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="donphone" required="required" value="{{ $p->donphone }}"></input> 08zzzzzzzzz<br/>		
-		Email &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="donemail" required="required" value="{{ $p->donemail }}"> zzz@zzzzz.zzz<br/>
-		Domisili &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="donarea" required="required" value="{{ $p->donarea }}"> zzzzzzzzz<br/>
-		ID Fundraiser &nbsp;&nbsp;<input type="text" name="fundid" required="required" value="{{ $p->fundid }}"> zzzzzzzz<br/>
-		Nama Fundraiser &nbsp;&nbsp;<input type="text" name="fundname" required="required" value="{{ $p->fundname }}"> zzzzzzzz<br/><br/>
+		<input type="hidden" name="trxid" value="{{ $p->trxid }}"><br/>
+		<div class="form-row">
+		    <div class="form-group col-md-6">
+				<label for="dondate">Tanggal Donasi:</label>
+				<input type="date" id="dondate" class="form-control" name="dondate">
+				<script>
+					const dateInput = document.getElementById('dondate');
+					const today = new Date();
+					const formattedDate = today.getFullYear() + '-' +
+					String(today.getMonth() + 1).padStart(2, '0') + '-' +
+					String(today.getDate()).padStart(2, '0');
+					dondate.value = formattedDate;
+				</script>
+			</div>
+			<div class="form-group col-md-6">		
+				<label for="donname">Nama Donatur:</label>	
+				<input type="text" class="form-control" name="donname" required="required" value="{{ $p->donname }}">
+			</div>
+			<div class="form-group col-md-6">
+				<label for="donamount">Jumlah Donasi:</label>	
+				<input type="text" class="form-control" name="donamount" required="required" value="{{ $p->donamount }}">
+			</div>
+			<div class="form-group col-md-6">
+				<label for="dontype">Tipe Donasi:</label>	
+				<select id="dontype" name="dontype" class="form-control">
+  					<option value="">Pilih</option>
+  					<option value="Zakat">Zakat</option>
+  					<option value="Infaq">Infaq</option>
+  					<option value="Sodaqoh">Sodaqoh</option>
+				</select>				
+			</div>
+			<div class="form-group col-md-6">
+				<label for="dontrx">Jenis Transaksi:</label>	
+				<select id="dontrx" name="dontrx" class="form-control">
+  					<option value="">Pilih</option>
+  					<option value="Cash">Tunai</option>
+  					<option value="TF">Transfer</option>
+				</select>				
+			</div>
+			<div class="form-group col-md-6">
+				<label for="donphone">No HP:</label>	
+				<input name="donphone" class="form-control" required="required" value="{{ $p->donphone }}"></input>	
+			</div>			
+			<div class="form-group col-md-6">
+				<label for="donemail">Email:</label>	
+				<input type="text" class="form-control" name="donemail" required="required" value="{{ $p->donemail }}">
+			</div>	
+			<div class="form-group col-md-6">
+				<label for="donarea">Domisili:</label>	
+				<input type="text" class="form-control" name="donarea" required="required" value="{{ $p->donarea }}">
+			</div>	
+			<div class="form-group col-md-6">
+				<label for="fundid">ID Fundraiser:</label>	
+				<input type="text" class="form-control" name="fundid" required="required" value="{{ $p->fundid }}">
+			</div>	
+			<div class="form-group col-md-6">
+				<label for="fundname">Nama Fundraiser:</label>	
+				<input type="text" class="form-control" name="fundname" required="required" value="{{ $p->fundname }}">
+			</div>
         <input type="hidden" name="fundstat" value="{{ $p->fundstat }}">
-		<input type="submit" value="Simpan Data">
+		<input type="submit" value="Simpan Data" role="button" class="btn btn-warning btn-sm">
 	</form>
 	@endforeach
 		

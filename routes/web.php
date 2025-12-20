@@ -22,3 +22,8 @@ Route::get('/fin/verifikasi/{id}',[FundController::class, 'verifikasi']);
 Route::post('/fin/verified',[FundController::class, 'verified']);
 Route::get('/fin/upload',[FinController::class, 'upload']);
 Route::post('/fin/uploaddata',[FinController::class, 'uploaddata']);
+
+// Export users to Excel
+Route::get('/export-users', [FinController::class, 'export'])->name('users.export');
+// Import users from Excel
+Route::post('/import-users', [FinController::class, 'import'])->name('users.import');

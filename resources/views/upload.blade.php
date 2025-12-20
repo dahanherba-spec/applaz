@@ -30,5 +30,5 @@
 		<input type="submit" value="Upload Data">
 	</form>
  
-</body>
+</body> 
 </html>
