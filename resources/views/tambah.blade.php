@@ -10,7 +10,7 @@
  	<br/><br/>
 	<div class="form-row">
 	    <div class="form-group col-md-6">
-			<a class="btn btn-warning btn-sm" href="/" role="button">&nbsp;<< Back&nbsp;</a>
+			<a class="btn btn-warning btn-sm" href="/fund" role="button">&nbsp;<< Back&nbsp;</a>
 		</div><br/>
 	</div>
 	<br/><br/>
